@@ -30,9 +30,9 @@
 
 
 
-                    <form method="POST" action="{{ route('blog.update', $blog) }}">
+                    <form method="POST" action="{{ route('blog.update', $blog) }}" enctype="multipart/form-data">
 
-                    @csrf
+                        @csrf
 
                         @method('PUT')
 
@@ -51,11 +51,39 @@
 
                             <x-jet-label for="body" value="{{ __('body') }}" />
 
-                            <x-jet-input id="body" class="block mt-1 w-full" type="text" name="body" :value="$blog->body" required autofocus autocomplete="body" />
-
+                            <!-- <x-jet-input id="body" class="block mt-1 w-full" type="text" name="body" :value="$blog->body" required autofocus autocomplete="body" /> -->
+                            <textarea name="body" id="body" class="form-control ckeditor" rows="5">{{$blog->body}}</textarea>
                         </div>
 
 
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+
+                            <div class="form-group">
+            
+                                <strong>Image:</strong>
+            
+                                <input type="file" name="featured_img" class="form-control">
+            
+                                <img src="/images/{{ $blog->image }}" width="300px">
+            
+                            </div>
+            
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select name="category_id" id="category_id" class="form-control">
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"{{ $category->id === $blog->category_id ? ' selected' : '' }}>
+                                    {{ $category->name }}</option>
+                            @endforeach 
+                            
+                            </select>
+                        </div>
                         <div class="flex mt-4">
 
                             <button type="submit" class="btn btn-success waves-effect waves-light">{{ __('Save post') }}</button>
@@ -72,7 +100,7 @@
 
 
 
-<!-- 
+    <!-- 
 <form method="POST" action="{{ route('blog.update', $blog) }}">
 @csrf
     <div class="row mb-3">

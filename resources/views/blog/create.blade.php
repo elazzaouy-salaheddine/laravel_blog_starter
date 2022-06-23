@@ -7,8 +7,10 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item active"><a href="{{ route('blog.index') }}" class="m-4">posts list</a></li>
-                        <li class="breadcrumb-item active"><a href="{{ route('blog.create') }}" class="m-4">Add new post</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('blog.index') }}" class="m-4">posts
+                                list</a></li>
+                        <li class="breadcrumb-item active"><a href="{{ route('blog.create') }}" class="m-4">Add new
+                                post</a></li>
                     </ol>
                 </div>
 
@@ -28,27 +30,50 @@
 
                     <x-jet-validation-errors class="mb-4" />
 
-                    <form method="POST" action="{{ route('blog.store') }}">
+                    <form method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
 
                         @csrf
                         <div>
 
                             <x-jet-label for="title" value="{{ __('title') }}" />
 
-                            <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
+                            <x-jet-input id="title" class="block mt-1 w-full" type="text" name="title"
+                                :value="old('title')" required autofocus autocomplete="title" />
 
                         </div>
                         <div>
 
                             <x-jet-label for="body" value="{{ __('body') }}" />
 
-                            <x-jet-input id="body" class="block mt-1 w-full" type="text" name="body" :value="old('body')" required autofocus autocomplete="body" />
+                            <textarea name="body" id="body" class="form-control ckeditor" rows="5"></textarea>
+
+
 
                         </div>
 
+
+                        <select class="form-control" name="category_id">
+                            @foreach ($categories as $category)
+                                <option value='{{ $category->id }}'>{{ $category->name }}</option>
+                            @endforeach
+
+                        </select>
+
+
+
+                        <div class="col-md-6">
+
+                            <input type="file" name="featured_img" class="form-control">
+
+                        </div>
+
+
+
+
                         <div class="flex mt-4">
 
-                            <button type="submit" class="btn btn-success waves-effect waves-light">{{ __('Save post') }}</button>
+                            <button type="submit"
+                                class="btn btn-success waves-effect waves-light">{{ __('Save post') }}</button>
 
                         </div>
 

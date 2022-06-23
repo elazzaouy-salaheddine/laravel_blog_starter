@@ -25,7 +25,8 @@ class UpdateBlogRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'body'=> 'required'
+            'body'=> 'required',
+            'category_id' =>'required'
         ];
     }
 }

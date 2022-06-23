@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">update category </h4>
+                <h4 class="mb-sm-0">update post </h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
@@ -30,10 +30,10 @@
                                 <div class="swiper product-thumbnail-slider p-2 rounded bg-light swiper-initialized swiper-horizontal swiper-pointer-events">
                                     <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);" id="swiper-wrapper-1cae9ef9b2f94e2a" aria-live="polite">
                                         <div class="swiper-slide swiper-slide-active" style="width: 325px; margin-right: 24px;" role="group" aria-label="1 / 4">
-                                            <img src="assets/images/products/img-8.png" alt="" class="img-fluid d-block">
+                                            <img src="{{ asset('images/'.$blog->image) }}" alt="{{ asset($blog->image) }}" class="img-fluid d-block">
                                         </div>
+                                    
                                   
-                                     
                                      
                                     </div>
                                 
@@ -72,7 +72,7 @@
 
                                 <div class="mt-4 text-muted">
                                     <h5 class="fs-13">Body :</h5>
-                                    <p>{{$blog->body}}</p>
+                                    <p>{!! html_entity_decode($blog->body) !!}</p>
                                 </div>
 
 

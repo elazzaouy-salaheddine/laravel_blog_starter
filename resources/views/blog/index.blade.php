@@ -29,16 +29,20 @@
                     <th scope="col">Id</th>
                     <th scope="col"> category name</th>
                     <th scope="col">Status</th>
+                    <th scope="col">category</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
+               
                 @forelse ($blogs as $post)
+               
                 <tr>
                     <th scope="row"> {{ $post->id }}</th>
                     <td><a href="{{ route('blog.show', $post) }}">{{ $post->title }}</a>  </td>
 
                     <td><i class="ri-checkbox-circle-line align-middle text-success"></i> {{$post->created_at}}</td>
+                    <td> {{$post->category->name}}</td>
                     <td>
                         <div class="hstack gap-3 flex-wrap">
                             <a href="{{ route('blog.edit', $post) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>

@@ -25,7 +25,8 @@ class StoreBlogRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'body'=> 'required'
+            'body'=> 'required',
+            'category_id' =>'required'
         ];
     }
 }

@@ -35,10 +35,11 @@
             <tbody>
                 @forelse ($categories as $category)
                 <tr>
+                    
                     <th scope="row"> {{ $category->id }}</th>
-                    <td> {{ $category->name }}</td>
+                    <td> <a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></td>
 
-                    <td><i class="ri-checkbox-circle-line align-middle text-success"></i> Subscribed</td>
+                    <td> {{ $category->blogs->count() }} posts</td>
                     <td>
                         <div class="hstack gap-3 flex-wrap">
                             <a href="{{ route('categories.edit', $category) }}" class="link-success fs-15"><i class="ri-edit-2-line"></i></a>

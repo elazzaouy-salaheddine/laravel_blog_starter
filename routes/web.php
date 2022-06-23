@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('posts/', [\App\Http\Controllers\BlogController::class,'postsindex']);
-
+Route::get('posts/{blog}', [\App\Http\Controllers\BlogController::class,'postsindexshow']);
 
 
 Route::middleware([
